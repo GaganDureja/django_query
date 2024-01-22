@@ -20,5 +20,6 @@ from posts.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('annotate/', test_annotate, name="test_annotate"),
+    path('annotate/', test_annotate),
+    path('aggregate/', test_aggregate)
 ]
