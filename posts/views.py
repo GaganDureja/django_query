@@ -57,7 +57,10 @@ def test_exclude(request):
     return HttpResponse(html)
 
 def test_order_by(request):
-    html = "This"
+    all_blogs = Entry.objects.order_by('-id')
+    html = "Blogs with latest/order by id desc <br><br>"
+    for entry in all_blogs:
+        html+= f"Heading - {entry.headline}, ID - {entry.id} <br>"
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
