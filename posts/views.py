@@ -48,7 +48,10 @@ def test_filter(request):
     return HttpResponse(html)
 
 def test_exclude(request):
-    html = "This"
+    least_rated = Entry.objects.exclude(rating__gt=3)
+    html = "Blogs with exclude rating greater than 3<br><br>"
+    for entry in least_rated:
+        html+= f"Heading - {entry.headline}, Rating - {entry.rating} <br>"
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
