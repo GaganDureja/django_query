@@ -66,7 +66,10 @@ def test_order_by(request):
     return HttpResponse(html)
 
 def test_values(request):
-    html = "This"
+    all_blogs = Entry.objects.values('id','headline')
+    html = "Blogs with only 2 values of id and headline  <br><br>"
+    for entry in all_blogs:
+        html+= f"Heading - {entry['headline']}, ID - {entry['id']} <br>"
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
