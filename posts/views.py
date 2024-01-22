@@ -75,7 +75,11 @@ def test_values(request):
     return HttpResponse(html)
 
 def test_distinct(request):
-    html = "This"
+    dis_auth = Entry.objects.values('authors').distinct()
+    html = "  Distinct author if repeated in entry  <br><br>"
+    for entry in dis_auth:
+        author_name = Author.objects.filter(id=entry['authors'])[0]
+        html+= f"Author - {author_name} <br>"        
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
