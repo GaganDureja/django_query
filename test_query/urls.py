@@ -21,5 +21,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('annotate/', test_annotate),
-    path('aggregate/', test_aggregate)
+    path('aggregate/', test_aggregate),
+    path('filter/', test_filter),
+    path('exclude/', test_exclude),
+    path('order_by/', test_order_by),
+    path('values/', test_values),
+    path('distinct/', test_distinct),
+    path('slicing/', test_slicing),
+    path('chaining/', test_chaining),
+    
 ]

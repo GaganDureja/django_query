@@ -24,14 +24,62 @@ def test_annotate(request):
 
     for author in authors_with_total_books:
         html += f"Author: {author.name}, Total Written: {author.total_written} <br>"
-
+    html+= '<br><button onclick="self.close()">Close</button>'
     return HttpResponse(html)
 
 
 def test_aggregate(request):
     authors_with_total_books = Entry.objects.aggregate(total_blogs=models.Count('blog__id'))
     html = "This is a aggregate of blogs written by all author %s" %authors_with_total_books['total_blogs']
-
-    
+    html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
+
+
+def test_filter(request):
+    top_rated = Entry.objects.filter(rating__gt=3)
+    html = "Blogs with rating greater than 3<br><br>"
+
+    for entry in top_rated:
+        html+= f"Heading - {entry.headline}, Rating - {entry.rating} <br>"
+
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_exclude(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_order_by(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_values(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_distinct(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_slicing(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
+def test_chaining(request):
+    html = "This"
+    html+= '<br><button onclick="self.close()">Close</button>'
+
+    return HttpResponse(html)
+
