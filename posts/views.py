@@ -94,7 +94,15 @@ def test_slicing(request):
     return HttpResponse(html)
 
 def test_chaining(request):
-    html = "This"
+    all_blogs = (
+        Entry.objects.filter(authors='1')
+                .exclude(rating='1')
+                .filter(pub_date__gt='2020-01-01')
+                .order_by('-id')
+    )
+    html = "  Multiple filter used above if used in single its called chaining  <br><br>"
+    for entry in all_blogs:
+        html+= f"Heading - {entry.headline}, ID - {entry.id} <br>"
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
