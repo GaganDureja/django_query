@@ -20,4 +20,4 @@ def home(request):
     return HttpResponse(html)
 
 def test_annotate(request):
-    return HttpResponse("Hi")
+    return HttpResponse("Hi this is annotate function")
