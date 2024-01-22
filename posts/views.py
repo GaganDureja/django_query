@@ -85,7 +85,10 @@ def test_distinct(request):
     return HttpResponse(html)
 
 def test_slicing(request):
-    html = "This"
+    first_2blogs = Blog.objects.all()[:2]
+    html = "  First 2 blogs  <br><br>"
+    for blog in first_2blogs:
+        html+= f"{blog} <br>"
     html+= '<br><button onclick="self.close()">Close</button>'
 
     return HttpResponse(html)
